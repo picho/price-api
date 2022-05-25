@@ -3,6 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const fs = require('fs');
 
 const priceRouter = require('./api/routes/prices');
 
@@ -17,7 +18,13 @@ const db = mongoose.connection;
 db.on("error", () => console.log("error"));
 db.once("open", () => console.log("Success"));
 
+app.use(morgan('common', {
+
+    stream: fs.createWriteStream('./log/accessLog/access.log', {flags: 'a'})
+}));
+
 app.use(morgan('dev'));
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
