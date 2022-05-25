@@ -15,8 +15,8 @@ console.log(connectionString);
 mongoose.connect(connectionString);
 
 const db = mongoose.connection;
-db.on("error", () => console.log("error"));
-db.once("open", () => console.log("Success"));
+db.on("error", () => console.log("Database connection error"));
+db.once("open", () => console.log("database connection success"));
 
 app.use(morgan('common', {
 
