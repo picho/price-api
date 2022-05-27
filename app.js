@@ -9,9 +9,6 @@ const priceRouter = require('./api/routes/prices');
 
 const connectionString = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@pich.2qahw.mongodb.net/?retryWrites=true&w=majority`;
 
-console.log("connectionString.....");
-console.log(connectionString);
-
 mongoose.connect(connectionString);
 
 const db = mongoose.connection;
