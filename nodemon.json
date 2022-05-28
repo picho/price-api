@@ -2,6 +2,8 @@
     "env": {
         "PORT": 3001,
         "MONGO_USERNAME": "arcelorMittal",
-        "MONGO_PASSWORD": "arcelorMittal"
+        "MONGO_PASSWORD": "arcelorMittal",
+        "JWT_KEY": "J04N4_CH14R4_9421_p1Ch0_91_ARCELORMITTAL",
+        "TOKEN_LIVE": "3h"
     }
 }

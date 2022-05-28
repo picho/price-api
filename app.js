@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 
 const priceRouter = require('./api/routes/prices');
+const userRouter = require('./api/routes/user');
 
 const connectionString = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@pich.2qahw.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -15,11 +16,7 @@ const db = mongoose.connection;
 db.on("error", () => console.log("Database connection error"));
 db.once("open", () => console.log("database connection success"));
 
-app.use(morgan('common', {
-
-    stream: fs.createWriteStream('./log/accessLog/access.log', {flags: 'a'})
-}));
-
+app.use(morgan('common', { stream: fs.createWriteStream('./log/accessLog/access.log', {flags: 'a'}) }));
 app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -40,8 +37,11 @@ app.use((req, res, next) => {
     next();
 });
 
+//--------------------------------------------------Custon routes-----------------------------------------------------------------
 app.use('/prices', priceRouter);
+app.use('/user', userRouter);
 
+//--------------------------------------------------Error catching-----------------------------------------------------------------
 //Error handler when a router was not hit (Not found)
 app.use((req, res, next) => {
     const error = new Error('Not Found');
