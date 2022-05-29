@@ -1,5 +1,7 @@
 # price-api
 
+This back-end app is meant to cover all the functionalities that ArcelorMittal's exercise asked. Its focus is to provied values that are get from a repository, An exchange rate would be apply to these values.
+
 ## Installation
 
 Use the following steps to make work this app.
