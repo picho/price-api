@@ -5,9 +5,9 @@ const CheckAuth = require('../middleware/CheckAuth');
 
 const pricesControllers = require('../controllers/prices');
 
-router.get('/', pricesControllers.prices_get_all);
+router.get('/', CheckAuth, pricesControllers.prices_get_all);
 
-router.get('/:priceId', pricesControllers.get_price_byId);
+router.get('/:priceId', CheckAuth, pricesControllers.get_price_byId);
 
 router.post('/', CheckAuth, pricesControllers.create_price);
 
